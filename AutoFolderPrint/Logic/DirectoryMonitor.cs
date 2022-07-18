@@ -47,12 +47,10 @@ namespace AutoFolderPrint
 
             watcher.EnableRaisingEvents = true;
             watcher.IncludeSubdirectories = true;
-
         }
 
         private static void HandleNewFile(object sender, FileSystemEventArgs e)
         {
-            //MessageBox.Show(text: $"New File: {e.FullPath}", caption: "New File!", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
             new PrintJob(e.FullPath).Execute();
         }
     }
