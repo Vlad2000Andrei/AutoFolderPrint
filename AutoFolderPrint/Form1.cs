@@ -13,6 +13,9 @@ namespace AutoFolderPrint
 {
     public partial class Form1 : Form
     {
+        private bool AskBeforePrinting;
+        private bool RemoveAfterPrinting;
+
         public Form1()
         {
             InitializeComponent();
@@ -21,22 +24,6 @@ namespace AutoFolderPrint
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadConfigs();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog fileDialog = new OpenFileDialog())
-            {
-
-                fileDialog.AddExtension = true;
-                fileDialog.Filter = "*.pdf|";
-                fileDialog.CheckFileExists = true;
-                fileDialog.CheckPathExists = true;
-                fileDialog.Multiselect = false;
-                DialogResult result = fileDialog.ShowDialog();
-
-                if (result == DialogResult.OK) new PrintJob(fileDialog.FileName).Print();
-            };
         }
 
         // Triggered when the "Browse" button is clicked to change the monitored folder.
@@ -75,16 +62,35 @@ namespace AutoFolderPrint
             Program.dirMonitor = new DirectoryMonitor(path);
             textBox1.Text = path;
             Program.dirMonitor.WatchDirectory();
+
+            AskBeforePrinting = Properties.Settings.Default.AskBeforePrinting;
+            askBeforePrintingCheckbox.Checked = AskBeforePrinting;
+
+            RemoveAfterPrinting = Properties.Settings.Default.RemoveAfterPrinting;
+            removeAfterPrintingCheckbox.Checked = RemoveAfterPrinting;
         }
 
         private void SaveConfigs()
         {
-            if (Properties.Settings.Default.PathToMonitor != Program.dirMonitor.DirectoryPath)
-            {
+            if (Program.dirMonitor != null) {
                 Properties.Settings.Default.PathToMonitor = Program.dirMonitor.DirectoryPath;
-            }
+            }           
 
             Properties.Settings.Default.Save();
+        }
+
+        private void askBeforePrintingCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            AskBeforePrinting = askBeforePrintingCheckbox.Checked;
+            Properties.Settings.Default.AskBeforePrinting = AskBeforePrinting;
+            SaveConfigs();
+        }
+
+        private void removeAfterPrintingCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            RemoveAfterPrinting = removeAfterPrintingCheckbox.Checked;
+            Properties.Settings.Default.RemoveAfterPrinting = RemoveAfterPrinting;
+            SaveConfigs();
         }
     }
 }

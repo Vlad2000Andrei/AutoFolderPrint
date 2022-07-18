@@ -25,13 +25,37 @@ namespace AutoFolderPrint.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string PathToMonitor {
             get {
                 return ((string)(this["PathToMonitor"]));
             }
             set {
                 this["PathToMonitor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AskBeforePrinting {
+            get {
+                return ((bool)(this["AskBeforePrinting"]));
+            }
+            set {
+                this["AskBeforePrinting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool RemoveAfterPrinting {
+            get {
+                return ((bool)(this["RemoveAfterPrinting"]));
+            }
+            set {
+                this["RemoveAfterPrinting"] = value;
             }
         }
     }
