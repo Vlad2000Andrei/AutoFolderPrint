@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace AutoFolderPrint
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            LoadConfigs();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,9 +37,9 @@ namespace AutoFolderPrint
 
                 if (result == DialogResult.OK) new PrintJob(fileDialog.FileName).Print();
             };
-
         }
 
+        // Triggered when the "Browse" button is clicked to change the monitored folder.
         private void button2_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog dialog = new FolderBrowserDialog())
@@ -58,8 +59,32 @@ namespace AutoFolderPrint
 
                     Program.dirMonitor.WatchDirectory();
                     textBox1.Text = dialog.SelectedPath;
+
+                    SaveConfigs();
                 }
             };
+        }
+
+        private void LoadConfigs()
+        {
+            string path = Properties.Settings.Default.PathToMonitor;
+
+            DirectoryInfo dirInfo = new DirectoryInfo(path);
+            if (dirInfo.Exists == false) return;
+
+            Program.dirMonitor = new DirectoryMonitor(path);
+            textBox1.Text = path;
+            Program.dirMonitor.WatchDirectory();
+        }
+
+        private void SaveConfigs()
+        {
+            if (Properties.Settings.Default.PathToMonitor != Program.dirMonitor.DirectoryPath)
+            {
+                Properties.Settings.Default.PathToMonitor = Program.dirMonitor.DirectoryPath;
+            }
+
+            Properties.Settings.Default.Save();
         }
     }
 }

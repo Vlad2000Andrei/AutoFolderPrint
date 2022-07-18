@@ -12,6 +12,7 @@ namespace AutoFolderPrint
     {
         public readonly string DirectoryPath;
         private FileSystemWatcher watcher;
+
         public DirectoryMonitor (string path)
         {
             DirectoryPath = path.Trim();
@@ -40,6 +41,7 @@ namespace AutoFolderPrint
                                 | NotifyFilters.Size;
 
             watcher.Changed += HandleNewFile;
+            watcher.Created += HandleNewFile;
 
             watcher.Filter = "*.pdf";
 
