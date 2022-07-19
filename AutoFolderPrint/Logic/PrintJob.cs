@@ -22,6 +22,9 @@ namespace AutoFolderPrint
         public void Execute()
         {
             Print();
+
+            Thread.Sleep(5000); // Wait a bit for the print process to stop. Otherwise the removal fails because the file is still in use.
+
             if (Properties.Settings.Default.RemoveAfterPrinting)
             {
                 RemoveFile();
