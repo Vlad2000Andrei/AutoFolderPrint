@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace AutoFolderPrint
 {
-    public partial class Form1 : Form
+    public partial class AutoPrint : Form
     {
         private bool AskBeforePrinting;
         private bool RemoveAfterPrinting;
 
-        public Form1()
+        public AutoPrint()
         {
             InitializeComponent();
         }

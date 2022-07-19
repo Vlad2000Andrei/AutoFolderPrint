@@ -1,6 +1,6 @@
 ﻿namespace AutoFolderPrint
 {
-    partial class Form1
+    partial class AutoPrint
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AutoPrint));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -37,69 +38,60 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 25);
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(697, 20);
-            this.textBox1.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Folder to monitor:";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(715, 23);
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Browse";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // removeAfterPrintingCheckbox
             // 
-            this.removeAfterPrintingCheckbox.AutoSize = true;
+            resources.ApplyResources(this.removeAfterPrintingCheckbox, "removeAfterPrintingCheckbox");
             this.removeAfterPrintingCheckbox.Checked = true;
             this.removeAfterPrintingCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.removeAfterPrintingCheckbox.Location = new System.Drawing.Point(12, 83);
+            this.removeAfterPrintingCheckbox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.removeAfterPrintingCheckbox.Name = "removeAfterPrintingCheckbox";
-            this.removeAfterPrintingCheckbox.Size = new System.Drawing.Size(148, 17);
-            this.removeAfterPrintingCheckbox.TabIndex = 4;
-            this.removeAfterPrintingCheckbox.Text = "Remove files after printing";
             this.removeAfterPrintingCheckbox.UseVisualStyleBackColor = true;
             this.removeAfterPrintingCheckbox.CheckedChanged += new System.EventHandler(this.removeAfterPrintingCheckbox_CheckedChanged);
             // 
             // askBeforePrintingCheckbox
             // 
-            this.askBeforePrintingCheckbox.AutoSize = true;
+            resources.ApplyResources(this.askBeforePrintingCheckbox, "askBeforePrintingCheckbox");
+            this.askBeforePrintingCheckbox.BackColor = System.Drawing.Color.Transparent;
             this.askBeforePrintingCheckbox.Checked = true;
             this.askBeforePrintingCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.askBeforePrintingCheckbox.Location = new System.Drawing.Point(12, 60);
+            this.askBeforePrintingCheckbox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.askBeforePrintingCheckbox.Name = "askBeforePrintingCheckbox";
-            this.askBeforePrintingCheckbox.Size = new System.Drawing.Size(114, 17);
-            this.askBeforePrintingCheckbox.TabIndex = 5;
-            this.askBeforePrintingCheckbox.Text = "Ask before printing";
-            this.askBeforePrintingCheckbox.UseVisualStyleBackColor = true;
+            this.askBeforePrintingCheckbox.UseVisualStyleBackColor = false;
             this.askBeforePrintingCheckbox.CheckedChanged += new System.EventHandler(this.askBeforePrintingCheckbox_CheckedChanged);
             // 
-            // Form1
+            // AutoPrint
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 283);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.Controls.Add(this.askBeforePrintingCheckbox);
             this.Controls.Add(this.removeAfterPrintingCheckbox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Name = "AutoPrint";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
