@@ -61,11 +61,22 @@ namespace AutoFolderPrint
                 acrobatPrintProcess.WaitForInputIdle();
                 Thread.Sleep(3000);
 
-                if (!acrobatPrintProcess.CloseMainWindow())
+                try
                 {
-                    acrobatPrintProcess.Kill();
+                    bool acrobatClosed = acrobatPrintProcess.CloseMainWindow();
+                    if (!acrobatClosed)
+                    {
+                        acrobatPrintProcess.Kill();
+                    }
                 }
-
+                catch (InvalidOperationException ex) 
+                {
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
